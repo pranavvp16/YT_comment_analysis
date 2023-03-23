@@ -4,14 +4,7 @@ import time
 import os
 import numpy as np
 
-options = webdriver.ChromeOptions
-options.add_argument("--headless")
-options.add_argument("--mute-audio")
-options.add_argument("-no-sandbox")
-options.add_argument("--disable-extension")
-options.add_argument("-disable-dev-shm-usage")
-
-class youtube_scapper(webdriver.Chrome(options=options)):
+class youtube_scrapper(webdriver.Chrome):
     """
         This is a youtube scrapper is made with selenium to scrap different elements
         on the youtube web-page given a URL
@@ -22,7 +15,7 @@ class youtube_scapper(webdriver.Chrome(options=options)):
         self.driver_path = driver_path
         self.video_url = video_url
         os.environ['PATH'] += self.driver_path
-        super(youtube_scapper, self).__init__()
+        super(youtube_scrapper, self).__init__()
 
     def yt_comments(self,convert_to_csv=False):
         """
