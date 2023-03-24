@@ -1,5 +1,8 @@
-from Comment_scrapper import comment_scapper
+from Comment_scrapper import youtube_scrapper
+from transformers import pipeline
 
-scapper = comment_scapper(video_url="https://youtu.be/rq8cL2XMM5M")
+scapper = youtube_scrapper(video_url="https://youtu.be/rq8cL2XMM5M")
 comments = scapper.yt_comments()
-
+analysis = pipeline(comments)
+for i in analysis:
+    print(analysis)
