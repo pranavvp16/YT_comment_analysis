@@ -10,13 +10,16 @@ class youtube_scrapper(webdriver.Chrome):
         on the youtube web-page given a URL
         Parameters
         video_url : (string)
+        teardown : bool
     """
-    def __init__(self,driver_path="r/selenium_driver/chromedriver_mac64/chromedriver",video_url="string"):
-        self.driver_path = driver_path
+    def __init__(self,video_url="string",teardown=True):
+        self.teardown = teardown
         self.video_url = video_url
-        os.environ['PATH'] += self.driver_path
         super(youtube_scrapper, self).__init__()
-
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("Executing teardown")
+        if self.teardown:
+            self.quit()
     def yt_comments(self,convert_to_csv=False):
         """
             Scraps youtube comments
@@ -40,6 +43,7 @@ class youtube_scrapper(webdriver.Chrome):
             np.savetxt("video_comments.csv",comment_list,delimiter=",",fmt='% s')
         else:
             return comments_list
+
 
 
 
