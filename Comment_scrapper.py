@@ -44,6 +44,11 @@ class youtube_scrapper(webdriver.Chrome):
         else:
             return comments_list
 
+        def yt_title(self):
+            video_title = self.find_element(By.NAME, 'title').get_attribute('content')
+            return video_title
+
+
 
 
 
