@@ -1,6 +1,7 @@
 from Comment_scrapper import youtube_scrapper
 from transformers import pipeline
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def sentiment(video_url):
@@ -12,3 +13,14 @@ def sentiment(video_url):
         comments = pd.Series(comments)
         df["comments"] = comments
     return df
+
+
+def plot_bar(df):
+    pos, neg = (df["label"] == "POSITIVE").value_counts()
+    labels = ["positive", "negative"]
+    number = [pos, neg]
+    return labels, number
+
+
+
+
