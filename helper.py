@@ -1,5 +1,6 @@
 from Comment_scrapper import youtube_scrapper
 from transformers import pipeline
+from wordcloud import WordCloud
 import pandas as pd
 
 def sentiment(video_url):
@@ -19,6 +20,11 @@ def plot_bar(df):
     number = [pos, neg]
     return labels, number
 
+
+def wc_gen(df):
+    wc = WordCloud(width=500, height=500, min_font_size=10, background_color="white")
+    df_wc = wc.generate(df['comments'].str.cat(sep=" "))
+    return df_wc
 
 
 

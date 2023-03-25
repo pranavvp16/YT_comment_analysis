@@ -37,6 +37,11 @@ else:
                 wedgeprops={'edgecolor': 'black', 'linewidth': 2})
         st.pyplot(fig1)
 
+    df_wc = helper.wc_gen(df)
+    fig,ax = plt.subplots()
+    ax.imshow(df_wc)
+    st.pyplot(fig)
+
 
 
 
