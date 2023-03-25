@@ -35,6 +35,7 @@ class youtube_scrapper(webdriver.Chrome):
             if new_height > 3000:
                 break
         comments = self.find_elements(By.XPATH, '//*[@id="content-text"]')
+        video_title = self.find_element(By.NAME, 'title').get_attribute('content')
         comments_list =[]
         for i in comments:
             comments_list.append(i.text)
@@ -42,11 +43,7 @@ class youtube_scrapper(webdriver.Chrome):
         if convert_to_csv is True:
             np.savetxt("video_comments.csv",comment_list,delimiter=",",fmt='% s')
         else:
-            return comments_list
-
-        def yt_title(self):
-            video_title = self.find_element(By.NAME, 'title').get_attribute('content')
-            return video_title
+            return comments_list,video_title
 
 
 

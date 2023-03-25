@@ -1,4 +1,5 @@
 import streamlit as st
+import helper
 from helper import sentiment
 import matplotlib.pyplot as plt
 
@@ -23,5 +24,21 @@ else:
         st.dataframe(filtered_df)
     else:
         st.dataframe(df)
+
+    fig, ax = plt.subplots()
+    fig1, ax1 = plt.subplots()
+    col1, col2 = st.columns(2)
+    label, numbers = helper.plot_bar(df)
+    with col1:
+        ax.bar(label, numbers, color="red")
+        st.pyplot(fig)
+    with col2:
+        ax1.pie(numbers,labels=label, autopct='%1.1f%%', startangle=90,colors=['white', 'red'],
+                wedgeprops={'edgecolor': 'black', 'linewidth': 2})
+        st.pyplot(fig1)
+
+
+
+
 
 
