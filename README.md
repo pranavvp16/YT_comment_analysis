@@ -15,3 +15,34 @@ This project aims to harness the power of Data Analysis and NLP to give valuable
 - Pandas
 - Hugging Face
 - Matplotlib
+
+## Run Locally
+
+Clone the project
+
+```bash
+git clone git@github.com:pranavvp16/YT_comment_analysis.git
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Start the server
+
+```bash
+streamlit run app.py
+```
+
+## Working demo and UI of the website
+![Working gif](App_screenshots/demo.gif)
+
+Features to be added:
+- NLP techniques to identify questions in comments
+- Spam and Ham filtering to remove unnecessary comments
+- Shift to Flask Framework of Python
+
+Please feel free to make pull request if you can add on the above or any 
+necessary features to the app
