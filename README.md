@@ -43,6 +43,7 @@ Features to be added:
 - NLP techniques to identify questions in comments
 - Spam and Ham filtering to remove unnecessary comments
 - Shift to Flask Framework of Python
+- Perform topic modeling techniques like LDA(Latent Dirichlet Allocation) to find trending topics in the comments
 
 Please feel free to make pull request if you can add on the above or any 
 necessary features to the app
