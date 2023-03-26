@@ -38,9 +38,10 @@ else:
         st.pyplot(fig1)
 
     df_wc = helper.wc_gen(df)
-    fig,ax = plt.subplots()
+    fig, ax = plt.subplots()
     ax.imshow(df_wc)
     st.pyplot(fig)
+
 
 
 

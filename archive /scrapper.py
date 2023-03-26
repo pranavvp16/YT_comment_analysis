@@ -11,7 +11,7 @@ options.add_argument("--mute-audio")
 options.add_argument("-no-sandbox")
 options.add_argument("--disable-extension")
 options.add_argument("-disable-dev-shm-usage")
-os.environ['PATH'] += r"/selenium_driver/chromedriver_mac64/chromedriver"
+os.environ['PATH'] += r"selenium_driver/chromedriver_mac64/chromedriver"
 driver = webdriver.Chrome(options=options)
 time.sleep(1)
 driver.get(VIDEO_URL)
