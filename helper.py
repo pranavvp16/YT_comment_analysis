@@ -5,6 +5,7 @@ from wordcloud import WordCloud
 import pandas as pd
 from youtube_api import YoutubeAPI
 import pickle as pkl
+from keys import api_key
 # def sentiment(video_url):
 #     with youtube_scrapper(video_url=video_url) as scrapper:
 #         comments, title = scrapper.yt_comments()
@@ -16,7 +17,7 @@ import pickle as pkl
 #     return df,title
 
 def sentiment(video_url):
-    comments, video_title, subscriber_count, channel_name = YoutubeAPI("AIzaSyB9CFZ7J5OgVaFTf4ubhddZTxH5SXjF5PQ",video_url)
+    comments, video_title, subscriber_count, channel_name = YoutubeAPI(api_key, video_url)
 
     comment_classifier = pkl.load(open("Pickle_file/question_classifier.pkl", 'rb'))
     vectorizer = pkl.load(open("Pickle_file/text_vectorizer.pkl", 'rb'))
@@ -39,7 +40,7 @@ def sentiment(video_url):
     feedback_comments = pd.Series(feedback_comments)
     df_feedback["comments"] = feedback_comments
     df_question = pd.DataFrame.from_dict(interrogative_comments)
-    return df_question,df_feedback,video_title
+    return df_question,df_feedback,video_title, channel_name, subscriber_count
 
 
 def plot_bar(df):
