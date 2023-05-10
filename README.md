@@ -7,7 +7,7 @@ feedbacks are found in comments section in the form of comments. It may get hect
 This project aims to harness the power of Data Analysis and NLP to give valuable insights to the creator.
 
 
-**Working** : This app uses the Selenium to scrap the youtube comments given URL of the video. This comments are passed to Hugging Face NLP transformer pipeline to perform sentiment analysis on the comments. The analysis helps the app to generate graphs with Matplotlib and give insigths through graphs
+**Working** : This app uses the Youtube API to fetch the youtube comments given URL of the video. This comments are passed to Hugging Face NLP transformer pipeline to perform sentiment analysis on the comments. The analysis helps the app to generate graphs with Matplotlib and give insigths through graphs
 
 **Tools**
 - Selenium
