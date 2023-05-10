@@ -18,8 +18,8 @@ if "https://youtu.be" not in video_url:
 else:
     df_questions, df_feedbacks, title ,channel_name, subscriber_count = dataframe(video_url)
     st.title(title)
-    st.sidebar.write(channel_name)
-    st.sidebar.write(subscriber_count)
+    st.sidebar.write("Channel name : "+channel_name)
+    st.sidebar.write("Subscribers : "+subscriber_count)
     filter_sentiment = st.sidebar.selectbox("Filter", ["Overall", "POSITIVE", "NEGATIVE"])
     if filter_sentiment != "Overall":
         filtered_df = df_feedbacks[df_feedbacks["label"] == filter_sentiment]
