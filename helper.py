@@ -6,18 +6,18 @@ import pandas as pd
 from youtube_api import YoutubeAPI
 import pickle as pkl
 from keys import api_key
-# def sentiment(video_url):
-#     with youtube_scrapper(video_url=video_url) as scrapper:
-#         comments, title = scrapper.yt_comments()
-#         sentiment_analysis = pipeline("sentiment-analysis")
-#         comment_analysis = sentiment_analysis(comments)
-#         df = pd.DataFrame.from_dict(comment_analysis)
-#         comments = pd.Series(comments)
-#         df["comments"] = comments
-#     return df,title
+import re
 
-def sentiment(video_url):
-    comments, video_title, subscriber_count, channel_name = YoutubeAPI(api_key, video_url)
+def extract_video_id(video_url):
+    regex_pattern = r"(?:v=|\/videos\/|embed\/|youtu.be\/|\/v\/|\/e\/|u\/\w+\/|embed\/|v=|e\/|u\/\w+\/|watch\?v=|&v=|\?v=)([^#\&\?]*)(?:[\?\&\#].*|$)"
+    match = re.search(regex_pattern, video_url)
+    if match:
+        return match.group(1)
+    else:
+        return None
+
+def sentiment(video_id):
+    comments, video_title, subscriber_count, channel_name = YoutubeAPI(api_key, video_id)
 
     comment_classifier = pkl.load(open("Pickle_file/question_classifier.pkl", 'rb'))
     vectorizer = pkl.load(open("Pickle_file/text_vectorizer.pkl", 'rb'))
