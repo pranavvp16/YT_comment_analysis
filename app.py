@@ -1,15 +1,17 @@
-from flask import Flask
+from flask import Flask, render_template, request
 from helper import sentiment
 app = Flask(__name__)
 
-@app.route("/")
-@app.route("/home")
+@app.route("/",methods=['GET','POST'])
+@app.route("/home",methods=['GET','POST'])
 def print():
-    return "<h1>Yeah this works asf<h1>"
+    return render_template('home.html')
 
-@app.route("analysis")
+@app.route("/analysis",methods=['POST'])
 def analyse():
-    return "<h1>This function analyses the video<h1>"
+    video_url = request.form['video_url']
+
+    return f"the entered video_url is {video_url}"
 
 
 
