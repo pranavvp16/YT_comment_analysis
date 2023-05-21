@@ -1,14 +1,6 @@
 from googleapiclient.discovery import build
 
-
-def YoutubeAPI(api_key, video_url):
-    # Trim video_id from video_url
-    if "youtube.com" in video_url:  # If user provides browser link
-        video_id = video_url[32:]
-
-    if "youtu.be" in video_url:  # If user provides share link
-        video_id = video_url[17:]
-
+def YoutubeAPI(api_key, video_id):
     youtube = build('youtube', 'v3', developerKey=api_key)
     comments = []
     next_page_token = None
