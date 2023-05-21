@@ -34,7 +34,7 @@ gb = GradientBoostingClassifier(n_estimators = 400, random_state=0)
 
 gb.fit(X_train, y_train)
 
-# Save trained Gradient Boosting model to aviod training and runtime
+# Save trained Gradient Boosting model to avoid training and runtime
 filename_model = "question_classifier"
 filename_vectorizer = "text_vectorizer"
 
