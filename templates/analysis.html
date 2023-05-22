@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Two Tables in Flexbox</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .table {
+            flex: 0 0 45%; /* Adjust the width as needed */
+        }
+
+        /* Additional styling for tables */
+        .table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table">
+            <h2>Table 1</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in question_data %}
+                    <tr>
+                        <td>{{ row.comment }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="table">
+            <h2>Table 2</h2>
+            <table>
+                <!-- Table 2 content -->
+                <thead>
+                    <tr>
+                        <th>Comment</th>
+                        <th>label</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in feedback_data %}
+                    <tr>
+                        <td>{{ row.comment }}</td>
+                        <td>{{ row.label }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
