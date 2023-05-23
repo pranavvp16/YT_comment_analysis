@@ -40,10 +40,11 @@ streamlit run app.py
 ![Working gif](App_screenshots/demo.gif)
 
 Features to be added:
-- NLP techniques to identify questions in comments
-- Spam and Ham filtering to remove unnecessary comments
-- Shift to Flask Framework of Python
-- Perform topic modeling techniques like LDA(Latent Dirichlet Allocation) to find trending topics in the comments
+- [ ] NLP techniques to identify questions in comments
+- [ ] Finetune BERT model for youtube comments classification
+- [ ] Train BERT model for Spam and Ham filtering to remove unnecessary comments
+- [ ] Shift to Flask Framework of Python
+- [ ] Perform topic modeling techniques like LDA(Latent Dirichlet Allocation) to find trending topics in the comments
 
 Please feel free to make pull request if you can add on the above or any 
 necessary features to the app
