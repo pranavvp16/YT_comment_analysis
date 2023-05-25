@@ -4,3 +4,5 @@
 __pycache__
 .idea
 keys.py
+test_app.py
+.ipynb_checkpoints
