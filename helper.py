@@ -6,15 +6,20 @@ import pandas as pd
 from youtube_api import YoutubeAPI
 import pickle as pkl
 from keys import api_key
-# def sentiment(video_url):
-#     with youtube_scrapper(video_url=video_url) as scrapper:
-#         comments, title = scrapper.yt_comments()
-#         sentiment_analysis = pipeline("sentiment-analysis")
-#         comment_analysis = sentiment_analysis(comments)
-#         df = pd.DataFrame.from_dict(comment_analysis)
-#         comments = pd.Series(comments)
-#         df["comments"] = comments
-#     return df,title
+from langdetect import detect
+from deep_translator import GoogleTranslator
+
+def translate_comments(list_comment, target_language):
+    comments_translated = []
+    for comment in list_comment:
+        print(comment)
+        if detect(comment)==target_language:
+            comments_translated.append(comment)
+        
+        else:
+            translated = GoogleTranslator(source='auto', target='en').translate(comment)
+            comments_translated.append(translated)
+    return comments_translated
 
 def sentiment(video_url):
     comments, video_title, subscriber_count, channel_name = YoutubeAPI(api_key, video_url)
@@ -34,8 +39,9 @@ def sentiment(video_url):
         else:
             feedback_comments.append(comment)
 
-    sentiment_analysis = pipeline("sentiment-analysis")
-    comment_analysis = sentiment_analysis(feedback_comments)
+    translated_comments = translate_comments(feedback_comments,'en')
+    sentiment_analysis = pipeline(model="distilbert-base-uncased-finetuned-sst-2-english")
+    comment_analysis = sentiment_analysis(translated_comments)
     df_feedback = pandas.DataFrame.from_dict(comment_analysis)
     feedback_comments = pd.Series(feedback_comments)
     df_feedback["comments"] = feedback_comments
@@ -44,7 +50,7 @@ def sentiment(video_url):
 
 
 def plot_bar(df):
-    pos, neg = (df["label"] == "POSITIVE").value_counts()
+    pos, neg = (df["label"]).value_counts()
     labels = ["positive", "negative"]
     number = [pos, neg]
     return labels, number

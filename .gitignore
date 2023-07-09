@@ -4,3 +4,11 @@
 __pycache__
 .idea
 keys.py
+spam_model_pt
+distilbert-base-uncased-finetuned-spam
+.pytest_cache
+.ipynb_checkpoints
+logs
+test_model.py
+test_app.py
+data
