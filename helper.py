@@ -13,12 +13,15 @@ def translate_comments(list_comment, target_language):
     comments_translated = []
     for comment in list_comment:
         print(comment)
-        if detect(comment)==target_language:
-            comments_translated.append(comment)
+        try:
+            if detect(comment)==target_language:
+             comments_translated.append(comment)
         
-        else:
-            translated = GoogleTranslator(source='auto', target='en').translate(comment)
-            comments_translated.append(translated)
+            else:
+                translated = GoogleTranslator(source='auto', target='en').translate(comment)
+                comments_translated.append(translated)
+        except Exception:
+            pass
     return comments_translated
 
 def sentiment(video_url):
@@ -50,9 +53,14 @@ def sentiment(video_url):
 
 
 def plot_bar(df):
-    pos, neg = (df["label"]).value_counts()
-    labels = ["positive", "negative"]
-    number = [pos, neg]
+    try:
+        pos, neg = (df["label"]).value_counts()
+        labels = ["positive", "negative"]
+        number = [pos, neg]
+    except Exception:
+        label = (df["label"]).value_counts()
+        labels = ["positive","negative"]
+        number = [label,0]
     return labels, number
 
 

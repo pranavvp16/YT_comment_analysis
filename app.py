@@ -28,22 +28,22 @@ else:
         st.dataframe(df_feedbacks)
     st.dataframe(df_questions)
 
-    # fig, ax = plt.subplots()
-    # fig1, ax1 = plt.subplots()
-    # col1, col2 = st.columns(2)
-    # label, numbers = helper.plot_bar(df_feedbacks)
-    # with col1:
-    #     ax.bar(label, numbers, color="red")
-    #     st.pyplot(fig)
-    # with col2:
-    #     ax1.pie(numbers,labels=label, autopct='%1.1f%%', startangle=90,colors=['white', 'red'],
-    #             wedgeprops={'edgecolor': 'black', 'linewidth': 2})
-    #     st.pyplot(fig1)
+    fig, ax = plt.subplots()
+    fig1, ax1 = plt.subplots()
+    col1, col2 = st.columns(2)
+    label, numbers = helper.plot_bar(df_feedbacks)
+    with col1:
+        ax.bar(label, numbers, color="red")
+        st.pyplot(fig)
+    with col2:
+        ax1.pie(numbers,labels=label, autopct='%1.1f%%', startangle=90,colors=['white', 'red'],
+                wedgeprops={'edgecolor': 'black', 'linewidth': 2})
+        st.pyplot(fig1)
 
-    # df_wc = helper.wc_gen(df_feedbacks)
-    # fig, ax = plt.subplots()
-    # ax.imshow(df_wc)
-    # st.pyplot(fig)
+    df_wc = helper.wc_gen(df_feedbacks)
+    fig, ax = plt.subplots()
+    ax.imshow(df_wc)
+    st.pyplot(fig)
 
 
 
