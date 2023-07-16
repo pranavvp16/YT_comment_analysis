@@ -24,6 +24,8 @@ def translate_comments(list_comment, target_language):
             pass
     return comments_translated
 
+
+
 def sentiment(video_url):
     comments, video_title, subscriber_count, channel_name = YoutubeAPI(api_key, video_url)
 
@@ -43,8 +45,8 @@ def sentiment(video_url):
             feedback_comments.append(comment)
 
     translated_comments = translate_comments(feedback_comments,'en')
-    sentiment_analysis = pipeline(model="distilbert-base-uncased-finetuned-sst-2-english")
-    comment_analysis = sentiment_analysis(translated_comments)
+    model = pipeline(model="distilbert-base-uncased-finetuned-sst-2-english")
+    comment_analysis = model(translated_comments)
     df_feedback = pandas.DataFrame.from_dict(comment_analysis)
     feedback_comments = pd.Series(feedback_comments)
     df_feedback["comments"] = feedback_comments

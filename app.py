@@ -2,6 +2,7 @@ import streamlit as st
 import helper
 from helper import sentiment
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 @st.cache_data()
@@ -16,6 +17,7 @@ video_url = st.sidebar.text_input("Enter Video URL of the video for analysis")
 if "https://youtu.be" not in video_url:
     st.sidebar.write("Enter video URL")
 else:
+    
     df_questions, df_feedbacks, title ,channel_name, subscriber_count = dataframe(video_url)
     st.title(title)
     st.sidebar.write("Channel name : "+channel_name)
@@ -32,11 +34,12 @@ else:
     fig1, ax1 = plt.subplots()
     col1, col2 = st.columns(2)
     label, numbers = helper.plot_bar(df_feedbacks)
+    pie_numbers = np.array([df_questions.shape[0],df_feedbacks.shape[0]])
     with col1:
         ax.bar(label, numbers, color="red")
         st.pyplot(fig)
     with col2:
-        ax1.pie(numbers,labels=label, autopct='%1.1f%%', startangle=90,colors=['white', 'red'],
+        ax1.pie(pie_numbers,labels=["Questions","Feedbacks"], autopct='%1.1f%%', startangle=90,colors=['white', 'red'],
                 wedgeprops={'edgecolor': 'black', 'linewidth': 2})
         st.pyplot(fig1)
 
