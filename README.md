@@ -45,6 +45,7 @@ Features to be added:
 - [ ] Train BERT model for Spam and Ham filtering to remove unnecessary comments
 - [ ] Shift to Flask Framework of Python
 - [ ] Perform topic modeling techniques like LDA(Latent Dirichlet Allocation) to find trending topics in the comments
+- [ ] Add feature to summarise a specific video.
 
 Please feel free to make pull request if you can add on the above or any 
 necessary features to the app
